@@ -65,7 +65,7 @@ const services = [
 
 export default function Services() {
     return (
-        <section id="services" className="px-16 py-28 bg-[#FEFCFA]">
+        <section id="services" className="md:px-16 px-4 py-28 bg-[#FEFCFA]">
             <div className="text-center mb-16">
                 <p className="text-[0.75rem] tracking-[0.18em] uppercase text-[#6B7C5A] mb-5 font-medium">
                     How We Work
@@ -75,7 +75,7 @@ export default function Services() {
                 </h2>
             </div>
 
-            <div className="grid grid-cols-3 gap-[2px] bg-[rgba(107,124,90,0.12)]">
+            <div className="grid md:grid-cols-3 gap-[2px] bg-[rgba(107,124,90,0.12)]">
                 {services.map((service) => (
                     <div
                         key={service.name}

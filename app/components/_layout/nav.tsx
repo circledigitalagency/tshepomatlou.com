@@ -1,12 +1,13 @@
 import { Link } from "@remix-run/react";
+import BurgerMenu from "./burger";
 
 export default function Navbar() {
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-16 py-5 bg-[rgba(254,252,250,0.92)] backdrop-blur-md border-b border-[rgba(107,124,90,0.1)]">
+        <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between sm:px-16 px-4 py-5 bg-[rgba(254,252,250,0.92)] backdrop-blur-md border-b border-[rgba(107,124,90,0.1)]">
             <Link to="/" className="font-serif text-[1.3rem] font-normal tracking-[0.04em] text-earth no-underline">
                 Tshepo Matlou
             </Link>
-            <ul className="flex gap-10 list-none">
+            <ul className="sm:flex gap-10 list-none hidden">
                 <li>
                     <Link to="/" className="no-underline text-[0.85rem] font-normal tracking-[0.08em] uppercase text-earth opacity-70 hover:opacity-100 transition-opacity">
                         Home
@@ -36,6 +37,8 @@ export default function Navbar() {
                     </Link>
                 </li>
             </ul>
+
+            <BurgerMenu />
         </nav>
     );
 }

@@ -17,13 +17,16 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
 
                 <ul className="flex flex-wrap justify-center gap-8 text-sm">
                     <li>
-                        <a href="#">About</a>
+                        <a href="#about">About</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="#services">Services</a>
                     </li>
                     <li>
-                        <a href="#">Blog</a>
+                        <a href="#offerings">Wellness Experiences</a>
+                    </li>
+                    <li>
+                        <a href="#shop">Shop</a>
                     </li>
                 </ul>
 

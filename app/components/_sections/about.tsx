@@ -4,9 +4,9 @@ import LogoCarousel from "../carousel/logo-carousel";
 export default function About() {
     return (
         <section id="about" className=" bg-[#F0F4EC]">
-            <div className="grid grid-cols-2">
+            <div className="grid sm:grid-cols-2">
                 {/* Image */}
-                <div className="relative min-h-[260px] overflow-hidden">
+                <div className="relative min-h-[260px] overflow-hidden order-2 md:order-1">
                     <img
                         src="https://res.cloudinary.com/dg1g6ctku/image/upload/v1751214264/tshepo-matlou_d4hpnq.jpg"
                         alt="Tshepo Matlou"
@@ -15,7 +15,7 @@ export default function About() {
                 </div>
 
                 {/* Content */}
-                <div className="px-14 py-24 flex flex-col justify-center">
+                <div className="sm:px-14 px-4 py-24 flex flex-col justify-center order-1 md:order-2">
                     <p className="text-[0.75rem] tracking-[0.18em] uppercase text-[#6B7C5A] mb-5 font-medium">
                         Meet Your Guide
                     </p>

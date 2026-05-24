@@ -1,8 +1,8 @@
 export default function Hero() {
     return (
-        <section className="min-h-screen grid grid-cols-2 align-top">
+        <section className="min-h-screen grid sm:grid-cols-2 align-top sm:mt-0 mt-20">
             {/* Text Side */}
-            <div className="flex flex-col justify-center px-16">
+            <div className="flex flex-col justify-center sm:px-16 px-4">
                 <p className="animate-fade-up-1 text-[0.78rem] tracking-[0.16em] uppercase text-[#6B7C5A] mb-6 font-medium">
                     Mindfulness · Coaching · Healing
                 </p>

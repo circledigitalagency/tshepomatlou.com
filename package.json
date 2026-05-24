@@ -12,6 +12,7 @@
 	},
 	"dependencies": {
 		"@heroicons/react": "^2.2.0",
+		"@radix-ui/react-dialog": "^1.1.15",
 		"@remix-run/node": "^2.16.8",
 		"@remix-run/react": "^2.16.8",
 		"@remix-run/serve": "^2.16.8",

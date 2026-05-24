@@ -96,10 +96,10 @@ export default function ThankYou() {
         <div className="w-full h-screen flex justify-center items-center sm:p-0 p-5">
             <div className="text-center p-8 space-y-5 border border-primary">
                 <div className="w-full flex justify-center">
-                    <CheckCircleIcon className="text-primary h-10 w-10" />
+                    <CheckCircleIcon className="text-sage h-10 w-10" />
                 </div>
 
-                <h1 className="text-2xl font-bold">Thank You 🌿</h1>
+                <h1 className="text-2xl font-bold font-serif">Thank You 🌿</h1>
                 <p>Your payment was successful. We'll be in touch soon.</p>
 
                 <div className="text-sm text-gray-500">
@@ -108,7 +108,7 @@ export default function ThankYou() {
                 </div>
 
                 <div className="w-full flex justify-center">
-                    <Link to="/">
+                    <Link to="/" className="rounded-full border border-earth p-2">
                         Return Home
                     </Link>
                     {/* <Form method="post" className="space-y-8">
