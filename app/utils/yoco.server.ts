@@ -112,7 +112,7 @@ export async function registerYocoWebhook() {
 			"Content-Type": "application/json",
 		},
 		body: JSON.stringify({
-			name: "Tshepo Matlou Payment Webhook",
+			name: "checkout-success-webhook",
 			url: webhookUrl,
 			events: ["payment.succeeded", "payment.failed"],
 		}),
