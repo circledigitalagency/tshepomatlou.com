@@ -90,10 +90,16 @@ export async function registerYocoWebhook() {
 	});
 
 	if (listRes.ok) {
-		const { webhooks } = (await listRes.json()) as {
-			webhooks: Array<{ id: string; url: string }>;
-		};
-		const existing = webhooks.find((wh) => wh.url === webhookUrl);
+		const data = await listRes.json();
+
+		// Yoco returns the array directly, not wrapped in { webhooks: [] }
+		const webhooks = Array.isArray(data)
+			? data
+			: data.webhooks ?? data.items ?? [];
+		const existing = webhooks.find(
+			(wh: { id: string; url: string }) => wh.url === webhookUrl,
+		);
+
 		if (existing) {
 			return { alreadyRegistered: true, webhook: existing };
 		}
