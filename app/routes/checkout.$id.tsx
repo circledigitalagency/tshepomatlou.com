@@ -38,7 +38,7 @@ export async function action({ request }: { request: Request }) {
     const formData = await request.formData();
     const entriesData = Object.fromEntries(formData);
     const result = formSchema.safeParse(entriesData);
-    //puhsing to test live keys
+    //puhsing to test live keys + url
 
     if (!result.success) {
         return json<ActionData>({
