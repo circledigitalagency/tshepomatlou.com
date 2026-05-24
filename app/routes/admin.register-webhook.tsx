@@ -13,7 +13,7 @@ export async function loader() {
 
 export default function RegisterWebhook() {
     const data = useLoaderData();
-
+    //success
     return (
         <div style={{ whiteSpace: "pre-wrap", fontFamily: "monospace" }}>
             <h1>Webhook Registration Result</h1>
