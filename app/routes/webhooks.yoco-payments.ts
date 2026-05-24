@@ -159,7 +159,7 @@ export async function action({ request }: { request: Request }) {
 		}
 
 		await sendEmail({
-			to: "me@tshepo.com",
+			to: "me@tshepomatlou.com",
 			subject: "📘 Book Purchase Notification",
 			html: `
 			<!DOCTYPE html>
