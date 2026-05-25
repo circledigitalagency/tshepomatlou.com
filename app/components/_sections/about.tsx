@@ -24,7 +24,7 @@ export default function About() {
                         <em className="italic text-[#6B7C5A]"> Matlou</em>
                     </h2>
                     <p className="text-earth opacity-70 font-light mb-4 text-base">
-                        <span><a className="text-sage italic underline" target="_blank" href="https://www.linkedin.com/in/tshepomatlou">Tshepo Matlou</a></span> is a mindfulness facilitator, life and leadership
+                        <span><a className="text-sage italic underline" target="_blank" href="https://www.linkedin.com/in/tshepo-matlou-b5357969/">Tshepo Matlou</a></span> is a mindfulness facilitator, life and leadership
                         coach, author, and speaker with over 20 years of experience in
                         executive leadership and personal transformation. With a calm,
                         grounded presence, Tshepo brings a unique blend of strategic

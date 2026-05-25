@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./nav";
+import { InstagramIcon, LinkedinIcon } from "lucide-react";
 
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
@@ -11,8 +12,14 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
             </main>
             {/* FOOTER */}
             <footer className="bg-[#3D3328] text-white/60 px-8 lg:px-16 py-10 flex flex-col lg:flex-row items-center justify-between gap-6">
-                <div className="font-serif text-xl text-[#C4A882]">
-                    Tshepo Matlou
+                <div>
+                    <div className="font-serif text-xl text-[#C4A882]">
+                        Tshepo Matlou
+                    </div>
+                    <div className="flex items-center space-x-2 ">
+                        <a href="https://www.instagram.com/tshepomatlou_27?utm_source=qr" target="_blank"><InstagramIcon size={17} /></a>
+                        <a href="https://www.linkedin.com/in/tshepo-matlou-b5357969/" target="_blank"><LinkedinIcon size={17} /></a>
+                    </div>
                 </div>
 
                 <ul className="flex flex-wrap justify-center gap-8 text-sm">

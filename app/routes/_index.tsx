@@ -67,7 +67,7 @@ export function StructuredData() {
       "Mindfulness facilitator, life and leadership coach, author, and speaker with over 20 years of experience.",
     jobTitle: "Mindfulness Coach & Life Coach",
     sameAs: [
-      "https://www.linkedin.com/in/tshepomatlou",
+      "https://www.linkedin.com/in/tshepo-matlou-b5357969/",
       "https://www.freedom27.co.za",
     ],
     address: {
