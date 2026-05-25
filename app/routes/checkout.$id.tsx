@@ -50,7 +50,7 @@ export async function action({ request }: { request: Request }) {
     const email = formData.get("email")?.toString();
     const amount = formData.get("amount")?.toString();
 
-    const amountInCents = Math.round(Number(2) * 100);
+    const amountInCents = Math.round(Number(amount) * 100);
     const reference = generateRef();
 
     const secretKey = process.env.YOCO_SECRET_API_KEY;
@@ -75,6 +75,7 @@ export async function action({ request }: { request: Request }) {
             },
             metadata: {
                 reference,
+                email
             },
         }),
     });

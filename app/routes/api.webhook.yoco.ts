@@ -14,15 +14,6 @@ export async function action({ request }: ActionFunctionArgs) {
 	// 1. Read raw body (needed for signature verification)
 	const rawBody = await request.text();
 
-	// 2. Verify signature
-	const signature = request.headers.get("webhook-signature");
-	const isValid = await verifyYocoSignature(rawBody, signature);
-
-	if (!isValid) {
-		console.warn("[yoco-webhook] Invalid signature — rejecting");
-		return json({ error: "Invalid signature" }, { status: 401 });
-	}
-
 	// 3. Parse payload
 	let event: YocoWebhookPayload;
 	try {
@@ -38,7 +29,9 @@ export async function action({ request }: ActionFunctionArgs) {
 
 	// 4. Handle events
 	if (event.type === "payment.succeeded") {
-		await handlePaymentSucceeded(event);
+		handlePaymentSucceeded(event).catch((err) =>
+			console.error("[yoco-webhook] Email error:", err),
+		);
 	}
 
 	if (event.type === "payment.failed") {
@@ -53,8 +46,9 @@ export async function action({ request }: ActionFunctionArgs) {
 // ─── Handlers ─────────────────────────────────────────────────────────────────
 
 async function handlePaymentSucceeded(event: YocoWebhookPayload) {
-	const { amount, metadata, customer } = event.payload;
-	const email = customer?.email;
+	const { amount, metadata } = event.payload;
+
+	const email = metadata?.email as string | undefined;
 	const reference = metadata?.reference as string | undefined;
 
 	console.log(

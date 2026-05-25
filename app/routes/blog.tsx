@@ -1,10 +1,41 @@
-import { Link, Outlet, useMatches } from "@remix-run/react";
+import { Link, MetaFunction, Outlet, useMatches } from "@remix-run/react";
 import { motion } from "framer-motion";
 import { Clock, ArrowRight } from "lucide-react";
 import MainLayout from "~/components/_layout/main";
 import { BlogCard } from "~/components/card/blog-card";
 import { blogPosts } from "~/lib/@data";
 
+export const meta: MetaFunction = () => {
+    const title = "Blog | Healing, Mindfulness & Growth — Tshepo Matlou";
+    const description =
+        "Read insights on trauma healing, mindfulness, leadership, and personal growth by Tshepo Matlou — mindfulness coach and life coach based in South Africa.";
+    const url = "https://www.tshepomatlou.com/blog";
+    const image =
+        "https://res.cloudinary.com/dg1g6ctku/image/upload/v1752150769/william-farlow-IevaZPwq0mw-unsplash_vygvrp.jpg";
+
+    return [
+        { title },
+        { name: "description", content: description },
+        { name: "keywords", content: "mindfulness blog, trauma healing articles, life coaching tips, personal growth South Africa, Tshepo Matlou blog, mental wellness, emotional healing" },
+        { name: "robots", content: "index, follow" },
+        { tagName: "link", rel: "canonical", href: url },
+
+        // Open Graph
+        { property: "og:type", content: "blog" },
+        { property: "og:url", content: url },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:image", content: image },
+        { property: "og:site_name", content: "Tshepo Matlou" },
+        { property: "og:locale", content: "en_ZA" },
+
+        // Twitter
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: image },
+    ];
+};
 
 export default function Page() {
     const matches = useMatches();

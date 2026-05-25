@@ -65,6 +65,14 @@ const BurgerMenu = () => {
                             </li>
                             <li>
                                 <Link
+                                    to="#shop"
+                                    className="no-underline border border-sage text-earth px-5 py-2 rounded-full text-[0.82rem] tracking-[0.06em] uppercase font-normal hover:bg-sage-pale transition-colors"
+                                >
+                                    Buy Freedom Book
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
                                     to="#contact"
                                     className="no-underline bg-sage text-cream px-5 py-2 rounded-full text-[0.82rem] tracking-[0.06em] uppercase font-normal hover:bg-earth transition-colors"
                                 >

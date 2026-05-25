@@ -14,10 +14,12 @@ export async function sendEmail({
 	to,
 	subject,
 	html,
+	replyTo,
 }: {
 	to: string;
 	subject: string;
 	html: string;
+	replyTo?: string;
 }) {
 	try {
 		await transporter.verify();
@@ -28,6 +30,7 @@ export async function sendEmail({
 			to,
 			subject,
 			html,
+			replyTo,
 		});
 
 		console.log("Email sent successfully:", info.messageId);

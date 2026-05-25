@@ -30,3 +30,14 @@ export interface LogoCarouselProps {
 	}[];
 	autoplaySpeed?: number;
 }
+
+export interface Blog {
+	title: string;
+	excerpt: string;
+	blogText: string;
+	author: string;
+	date: string;
+	readTime: string;
+	image: string;
+	category: string;
+}
