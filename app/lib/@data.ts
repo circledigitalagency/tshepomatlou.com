@@ -228,7 +228,7 @@ export const shopData: Shop[] = [
 		name: "Freedom - Pursuit of Liberty",
 		description:
 			"Discover the strength in surrender. This book guides you through healing old wounds, embracing change, and finding peace through mindfulness and self-awareness.",
-		price: 350,
+		price: 300,
 	},
 	// {
 	// 	id: "oneOnone",

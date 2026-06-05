@@ -202,7 +202,7 @@ export default function Checkout() {
 														<span>{quantity}</span>
 													</div>
 													<p className="flex justify-end text-xs text-gray-600">
-														+ R20 delivery fee via Pargo or PEP (depending on
+														+ R70 delivery fee via Pargo or PEP (depending on
 														your location)
 													</p>
 													<div className="border-t border-gray-200 pt-3">
@@ -217,7 +217,7 @@ export default function Checkout() {
 																className="text-2xl font-bold text-primary"
 															>
 																<AnimatedPrice
-																	amount={product.price * quantity + 20}
+																	amount={product.price * quantity + 70}
 																/>
 															</motion.span>
 															<motion.input
