@@ -221,7 +221,9 @@ export default function Checkout() {
 																/>
 															</motion.span>
 															<motion.input
-																value={(product.price * quantity).toFixed(2)}
+																value={(product.price * quantity + 70).toFixed(
+																	2,
+																)}
 																name="amount"
 																type="hidden"
 															/>
