@@ -1,6 +1,7 @@
 import { Link } from "@remix-run/react";
 import BurgerMenu from "./burger";
 import { Book, BookCopy, ShoppingCartIcon } from "lucide-react";
+import CartButton from "../ui/CartButton";
 
 export default function Navbar() {
 	return (
@@ -31,12 +32,7 @@ export default function Navbar() {
 					Blog
 				</Link>
 				<div className="flex space-x-2">
-					<Link
-						to="#shop"
-						className="border border-sage px-5 py-2 rounded-full hover:bg-sage-pale transition-colors"
-					>
-						<ShoppingCartIcon className="text-sage h-4 w-4" />
-					</Link>
+					<CartButton />
 					<Link
 						to="#contact"
 						className="no-underline bg-sage text-cream px-5 py-2 rounded-full text-[0.82rem] tracking-[0.06em] uppercase font-normal hover:bg-earth transition-colors"

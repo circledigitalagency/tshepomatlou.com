@@ -1,4 +1,5 @@
 // app/utils/yoco.server.ts
+import crypto from "node:crypto";
 
 const YOCO_SECRET_KEY = process.env.YOCO_SECRET_API_KEY!;
 const YOCO_WEBHOOK_SECRET = process.env.YOCO_WEBHOOK_SECRET!;
@@ -132,33 +133,39 @@ export async function registerYocoWebhook() {
 
 // ─── Verify Webhook Signature ─────────────────────────────────────────────────
 // Yoco signs payloads with HMAC-SHA256. Verify before processing.
-
-export async function verifyYocoSignature(
+const TOLERANCE_SECONDS = 5 * 60;
+export function verifyYocoSignature(
 	rawBody: string,
-	signatureHeader: string | null,
-): Promise<boolean> {
-	if (!signatureHeader || !YOCO_WEBHOOK_SECRET) return false;
+	headers: Headers,
+	secret: string | undefined,
+) {
+	if (!secret) {
+		console.error("[yoco] YOCO_WEBHOOK_SECRET is not set");
+		return false;
+	}
 
-	const encoder = new TextEncoder();
-	const key = await crypto.subtle.importKey(
-		"raw",
-		encoder.encode(YOCO_WEBHOOK_SECRET),
-		{ name: "HMAC", hash: "SHA-256" },
-		false,
-		["sign"],
-	);
+	const id = headers.get("webhook-id");
+	const timestamp = headers.get("webhook-timestamp");
+	const signatureHeader = headers.get("webhook-signature");
+	if (!id || !timestamp || !signatureHeader) return false;
 
-	const signature = await crypto.subtle.sign(
-		"HMAC",
-		key,
-		encoder.encode(rawBody),
-	);
+	// reject old / replayed events
+	const age = Math.abs(Date.now() / 1000 - Number(timestamp));
+	if (!Number.isFinite(age) || age > TOLERANCE_SECONDS) return false;
 
-	const computed = Array.from(new Uint8Array(signature))
-		.map((b) => b.toString(16).padStart(2, "0"))
-		.join("");
+	const key = Buffer.from(secret.replace(/^whsec_/, ""), "base64");
+	const expected = crypto
+		.createHmac("sha256", key)
+		.update(`${id}.${timestamp}.${rawBody}`)
+		.digest();
 
-	// Yoco may prefix the header with "sha256=" — handle both forms
-	const received = signatureHeader.replace(/^sha256=/, "");
-	return computed === received;
+	return signatureHeader.split(" ").some((part) => {
+		const [version, sig] = part.split(",");
+		if (version !== "v1" || !sig) return false;
+		const given = Buffer.from(sig, "base64");
+		return (
+			given.length === expected.length &&
+			crypto.timingSafeEqual(given, expected)
+		);
+	});
 }

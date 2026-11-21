@@ -23,7 +23,7 @@ export async function sendEmail({
 }) {
 	try {
 		await transporter.verify();
-		console.log("SMTP connection verified");
+		//console.log("SMTP connection verified");
 
 		const info = await transporter.sendMail({
 			from: `"Tshepo Matlou" <${process.env.EMAIL_USER}>`,
@@ -33,7 +33,7 @@ export async function sendEmail({
 			replyTo,
 		});
 
-		console.log("Email sent successfully:", info.messageId);
+		//console.log("Email sent successfully:", info.messageId);
 		return { success: true, messageId: info.messageId };
 	} catch (error) {
 		console.error("Email sending failed:", error);

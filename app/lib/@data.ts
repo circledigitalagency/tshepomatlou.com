@@ -1,4 +1,4 @@
-import { GalleryItem, Shop } from "./@types";
+import { GalleryItem } from "./@types";
 
 export const galleryItems: GalleryItem[] = [
 	{
@@ -220,45 +220,143 @@ export const programs = [
 	},
 ];
 
+export type BackCoverBlock =
+	| { type: "heading"; text: string }
+	| { type: "paragraph"; text: string }
+	| { type: "list"; items: string[] };
+
+export type Shop = {
+	id: string;
+	/** Flat 3D mockup — used on checkout, social cards, etc. */
+	image: string;
+	name: string;
+	/** Heading on the shop section, e.g. "Freedom" + italic "Pursuit of Liberty" */
+	title: string;
+	titleEm: string;
+	subtitle: string;
+	description: string;
+	price: number;
+	isbn: string;
+	cover: {
+		front: string;
+		back: string;
+		/** High-res back cover for the "read the back" dialog */
+		backFull: string;
+		spine: string;
+		/** width / height of one cover panel */
+		aspect: number;
+		/** spine width as a fraction of the cover width */
+		spineRatio: number;
+		/** colour used for the page edges / book interior tint */
+		accent: string;
+	};
+	/** Text version of the back cover — readable on any screen and indexable by Google */
+	backCover: BackCoverBlock[];
+};
+
 export const shopData: Shop[] = [
 	{
-		id: "book",
-		image:
-			"https://res.cloudinary.com/dg1g6ctku/image/upload/v1751621135/book_hexyzz.svg",
+		id: "book", // kept as "book" so existing /checkout/book links keep working
+		image: "/books/freedom-3d.webp",
 		name: "Freedom - Pursuit of Liberty",
+		title: "Freedom",
+		titleEm: "Pursuit of Liberty",
+		subtitle: "Mind, Body and Soul",
 		description:
 			"Discover the strength in surrender. This book guides you through healing old wounds, embracing change, and finding peace through mindfulness and self-awareness.",
 		price: 300,
+		isbn: "978-0-7961-1523-2",
+		cover: {
+			front: "/books/freedom-front.webp",
+			back: "/books/freedom-back.webp",
+			backFull: "/books/freedom-back-full.webp",
+			spine: "/books/freedom-spine.webp",
+			aspect: 148 / 210,
+			spineRatio: 0.088,
+			accent: "#C4A882",
+		},
+		backCover: [
+			{
+				type: "paragraph",
+				text: "Freedom is a condition whereby those living in it can speak, act and pursue happiness without unnecessary external restrictions. Most people see freedom as a means through which they enhance their expression of being.",
+			},
+			{
+				type: "paragraph",
+				text: "This book journeys with you in identifying what holds you back from being the authentic you and feeling free. As you read this book, remember that the only thing that stands between you and your success or what you want to become is death. As a human being you are unstoppable.",
+			},
+			{
+				type: "paragraph",
+				text: "That said, you should approach each situation in life without fear of the unknown. No-one on earth has power over you, not your parents, not your partner, not your children, not your friends, not your colleagues nor your boss. No one has power over you but yourself.",
+			},
+			{
+				type: "paragraph",
+				text: "To be realistic, only the freedom of thought, conscience and opinion are exercised without any real restriction. Each and every person is free to think what he or she likes without fear of government interference, so long his or her opinion remain private. Ironic, right?",
+			},
+			{ type: "heading", text: "Liberty of Mind, Body and Soul" },
+		],
 	},
-	// {
-	// 	id: "oneOnone",
-	// 	image:
-	// 		"https://res.cloudinary.com/dg1g6ctku/image/upload/v1751214294/subconscious-healing_g3bymp.jpg",
-	// 	name: "One on One Life Coaching",
-	// 	description:
-	// 		"Personalized sessions to support your growth, clarity, and emotional well-being — guided by compassionate listening and transformative tools.",
-	// 	packages: [
-	// 		{
-	// 			id: "4sessions",
-	// 			name: "4 Sessions",
-	// 			price: 1200,
-	// 		},
-	// 	],
-	// },
-	// {
-	// 	id: "couple",
-	// 	image: "/images/coaching02.jpg",
-	// 	name: "Couples session",
-	// 	description:
-	// 		"Strengthen connection, communication, and emotional harmony in your relationship through mindful, heart-centered guidance.",
-	// 	packages: [
-	// 		{
-	// 			id: "4sessions",
-	// 			name: "4 Sessions",
-	// 			price: 1800,
-	// 		},
-	// 	],
-	// },
+	{
+		id: "healing-trauma",
+		image: "/books/healing-trauma-3d.webp",
+		name: "Healing Trauma",
+		title: "Healing",
+		titleEm: "Trauma",
+		subtitle: "Heal Within. Break the Cycle. Rewrite Your Future.",
+		description:
+			"A powerful and compassionate invitation to look beyond the wounds of your past, understand the patterns shaping your present, and begin creating a different future.",
+		price: 300,
+		isbn: "978-1-0492-0575-5",
+		cover: {
+			front: "/books/healing-trauma-front.webp",
+			back: "/books/healing-trauma-back.webp",
+			backFull: "/books/healing-trauma-back-full.webp",
+			spine: "/books/healing-trauma-spine.webp",
+			aspect: 1146 / 1651,
+			spineRatio: 0.15,
+			accent: "#E0A84A",
+		},
+		backCover: [
+			{
+				type: "heading",
+				text: "What if the pain you have learned to live with is quietly shaping the life you are trying to build?",
+			},
+			{
+				type: "paragraph",
+				text: "Not every wound is visible. Some hide behind success, silence, anger, fear, broken relationships and the constant need to be strong. Others are carried from childhood into adulthood, influencing how we love, trust, parent, lead and see ourselves. Sometimes we repeat patterns we never chose, carry burdens we do not understand, and pass on pain we never intended to share.",
+			},
+			{ type: "heading", text: "What if the cycle could end with you?" },
+			{
+				type: "paragraph",
+				text: "Healing Trauma is a powerful and compassionate invitation to look beyond the wounds of your past, understand the patterns shaping your present, and begin creating a different future.",
+			},
+			{
+				type: "paragraph",
+				text: "Through relatable stories, practical exercises, meaningful reflections and the Trauma-to-Freedom Method, this book will guide you towards:",
+			},
+			{
+				type: "list",
+				items: [
+					"Recognising hidden emotional wounds and understanding their influence on your life.",
+					"Breaking generational patterns and creating healthier environments for your children and family.",
+					"Rebuilding self-worth, emotional awareness, trust and meaningful relationships.",
+					"Developing healthier boundaries, emotional intelligence and compassionate leadership.",
+					"Finding the courage to rewrite your story and move forward with greater freedom, purpose and hope.",
+				],
+			},
+			{
+				type: "paragraph",
+				text: "Whether you are navigating personal struggles, healing from broken relationships, raising children, leading others or simply searching for a deeper understanding of yourself, this book offers a place to begin.",
+			},
+			{
+				type: "paragraph",
+				text: "Drawing on lived experience and years of working with individuals, families and leaders, Tshepo Matlou reminds us that healing is not about pretending the past never happened. It is about learning to live differently because we have begun to understand it.",
+			},
+			{
+				type: "paragraph",
+				text: "This is not just a book about trauma. It is a journey towards freedom. Your past may explain your wounds, but it does not have to define your future. The cycle can end with you. A different story can begin.",
+			},
+		],
+	},
 ];
 
 export const qualifications = [
