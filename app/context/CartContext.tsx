@@ -85,7 +85,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
 				setQtys((q) => ({ ...q, [id]: Math.min((q[id] ?? 0) + qty, 99) })),
 			setQty,
 			remove: (id) => setQty(id, 0),
-			clear: () => setQtys({}),
+			clear: () => {
+				setQtys({});
+				try {
+					localStorage.removeItem(STORAGE_KEY);
+				} catch {
+					/* storage unavailable */
+				}
+			},
 			isOpen,
 			open: () => setIsOpen(true),
 			close: () => setIsOpen(false),
