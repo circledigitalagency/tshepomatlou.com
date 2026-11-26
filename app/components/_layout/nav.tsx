@@ -42,12 +42,7 @@ export default function Navbar() {
 				</div>
 			</div>
 			<div className="flex items-center space-x-2 sm:hidden">
-				<Link
-					to="#shop"
-					className="sm:hidden flex no-underline border border-sage text-earth px-5 py-2 rounded-full text-[0.82rem] tracking-[0.06em] uppercase font-normal hover:bg-sage-pale transition-colors"
-				>
-					<ShoppingCartIcon className="text-sage h-4 w-4" />
-				</Link>
+				<CartButton />
 
 				<BurgerMenu />
 			</div>
